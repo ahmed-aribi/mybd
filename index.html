@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Ahmed Aribi!</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+        .birthday-message {
+            max-width: 600px;
+        }
+        .birthday-message h1 {
+            font-size: 3em;
+            margin: 0.5em 0;
+        }
+        .birthday-message p {
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-message">
+        <h1>Happy Birthday, Ahmed Aribi!</h1>
+        <p>18 years old today, July 22, 2024</p>
+        <p id="time-message"></p>
+    </div>
+
+    <script>
+        function calculateTimeAndAge() {
+            const now = new Date();
+            const birthDate = new Date(2006, 6, 22); // July 22, 2006 (months are 0-indexed)
+            const timeNow = now.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+            const ageInMinutes = Math.floor((now - birthDate) / (1000 * 60));
+            const message = `It's ${timeNow}. Today is my birthday, happy birthday to me. I am an adult no, age = ${ageInMinutes} minutes...`;
+            document.getElementById('time-message').innerText = message;
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        calculateTimeAndAge(); 
+        setInterval(calculateTimeAndAge, 60000); // Update every minute
+    </script>
+</body>
+</html>
